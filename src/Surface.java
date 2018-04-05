@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.util.Random;
+
 public abstract class Surface {
 
     // nombres définissant le rectangle dans lequel les points seront tirés :
@@ -8,25 +11,30 @@ public abstract class Surface {
     protected float y_max;
 
     // constructeur par valeurs
+
+
     public Surface(float x_min, float x_max, float y_min, float y_max) {
-        // TODO
+        this.x_min = x_min;
+        this.x_max = x_max;
+        this.y_min = y_min;
+        this.y_max = y_max;
     }
 
     // tirage d'une abscisse au hasard dans l'intervalle [x_min; x_max]
-    private float randomX() {
-        // TODO
-        return 0.F;
+    protected float randomX() {
+       return (float) (x_min+ Math.random()*(x_max-x_min));
     }
 
     // tirage d'une ordonnée au hasard dans l'intervalle [y_min; y_max]
-    private float randomY() {
-        // TODO
-        return 0.F;
+    protected float randomY() {
+        return (float) (y_min+ Math.random()*(y_max-y_min));
     }
 
     // permet de savoir si un point est dans la surface ou non :
     // à réimplémenter pour chaque type de surface
-    abstract boolean isInArea(float x, float y);
+    protected abstract boolean isInArea(float x, float y);
+
+
 
     // tirage de nbRepet points dans le rectangle de sommets :
     // (x_min, y_min), (x_min, y_max), (x_max, y_max), (x_max, y_min)
