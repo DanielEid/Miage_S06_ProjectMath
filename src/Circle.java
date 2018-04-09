@@ -1,7 +1,6 @@
 public class Circle extends Surface{
 
     private float rayon;
-    // définition du rectangle dans lequel les points seront tirés
 
 
     public Circle() {

@@ -33,6 +33,7 @@ public abstract class Surface {
         return (float) (y_min+ Math.random()*(y_max-y_min));
     }
 
+    //Calcul l'aire de notre surface en fonction de l'aire du graph et du nombre de points dans chaqu'une des deux listes
     protected void calculAireFromListePoint(float aireGraph, float nombrePointsGraph, float nombrePointSurface){
            this.aire=(nombrePointSurface/nombrePointsGraph)*aireGraph;
 
@@ -54,7 +55,6 @@ public abstract class Surface {
     // calcule une estimation de l'aire si count points étaient dans la surface
     // lors de nbRepet tirages de points
     private float areaMonteCarlo(int count, int nbRepet) {
-        // TODO
         return 0.F;
     }
 
@@ -63,14 +63,12 @@ public abstract class Surface {
     // surface avec 3 chiffres obligatoires derrière la virgule
     // affiche cette chaîne de caractères
     private void printMonteCarlo(int count, float area) {
-        // TODO
     }
 
     // assemble les différentes fonctions précédentes :
     // pour un nombre nbRepet de points à tirer, on tire ces points, compte ceux
     // dans la surface, calcule l'aire, puis affiche le tout
     public void simulateMonteCarlo(int nbRepet) {
-        // TODO
     }
 
 

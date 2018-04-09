@@ -6,7 +6,6 @@ public class Rectangle extends Surface{
 
     }
 
-    // définition du rectangle dans lequel les points seront tirés
     public Rectangle(float x_min, float x_max, float y_min, float y_max) {
         super(x_min, x_max, y_min, y_max);
     }
