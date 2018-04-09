@@ -35,7 +35,6 @@ public class Main {
          * Une zone genere 1000 points, le resultat afficher est la moyenne du calcul de l'aire * nbrIterations
          */
 
-        System.out.println(nbrIterations);
 
         zone0.simulateMonteCarlo(nbrIterations);  //Ici l'aire de notre zone 0 est de 10*10 donc 100  Pour le rectangle
 
