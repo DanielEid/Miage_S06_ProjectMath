@@ -8,7 +8,7 @@ public class Zone extends Surface{
     private Surface maSurface;
     private float aire;
 
-    public Zone(Surface maSurface,float x_max, float y_max) {
+    public Zone(Surface maSurface,float x_min,float x_max,float y_min, float y_max) {
         super(0,x_max,0,y_max);
         this.listePoints = new ArrayList<Point>();
         this.listePointsDansMaSurface = new ArrayList<Point>();
@@ -129,7 +129,7 @@ public class Zone extends Surface{
             moyenneTailleListePointDansMaSurface/=nbrIterations;
 
 
-            System.out.println(this.toString());
+           // System.out.println("\n"+ this.toString());
             System.out.println((int)Math.floor(moyenneTailleListePointDansMaSurface)+"    "+moyenneAireMaSurface);
         }
 
