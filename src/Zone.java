@@ -129,7 +129,6 @@ public class Zone extends Surface{
             moyenneTailleListePointDansMaSurface/=nbrIterations;
 
 
-           // System.out.println("\n"+ this.toString());
             System.out.println((int)Math.floor(moyenneTailleListePointDansMaSurface)+"    "+moyenneAireMaSurface);
         }
 
