@@ -1,21 +1,19 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Zone extends Surface{
 
     private ArrayList<Point> listePoints;
     private ArrayList<Point> listePointsDansMaSurface;
     private Surface maSurface;
-    private float x_min;
-    private float x_max;
-    private float y_min;
-    private float y_max;
+    private float aire;
 
     public Zone(Surface maSurface,float x_max, float y_max) {
         super(0,x_max,0,y_max);
         this.listePoints = new ArrayList<Point>();
         this.listePointsDansMaSurface = new ArrayList<Point>();
         this.maSurface= maSurface;
-
+        this.aire=(this.x_max-this.x_min)*(this.y_max-this.y_min);
     }
 
 
@@ -57,8 +55,8 @@ public class Zone extends Surface{
     @Override
     public String toString() {
         return "Zone{" +
-                "listePoints taille=" + listePoints.size() +
-                ", listePointsDansMaSurface taille=" + listePointsDansMaSurface.size() ;
+                "listePoints taille=" + listePoints.size() +" aire Zone= "+ aire +
+                ", listePointsDansMaSurface taille=" + listePointsDansMaSurface.size()+ " aire surface= "+ maSurface.aire ;
     }
 
     //OTHERS//
@@ -94,11 +92,50 @@ public class Zone extends Surface{
         return listePointsDansMaSurface.size();
     }
 
-    public String monteCarlo(int nbrPoint){
+    public void monteCarlo(int nbrPoint){
 
-        this.generenatePoints(nbrPoint);
-        this.isInAreaOfmySurface();
+        this.generenatePoints(nbrPoint);  //Genere les points dans la zone
+        this.isInAreaOfmySurface();       //Indiques quels point font parti de maSurface (donc la surface dans la zone)
 
+        this.maSurface.calculAireFromListePoint(aire,listePoints.size(),listePointsDansMaSurface.size());  //Calcul l'aire de la surface en fonction de l'aire de la zone et du resultat des points
+        }
+
+
+        public void simulateMonteCarlo(int nbrIterations){
+            float moyenneAireMaSurface=0;
+            float moyenneTailleListePointDansMaSurface=0;
+
+
+            //Generer avec 1000 points
+
+
+            for(int i=0;i<nbrIterations;i++){
+                //Iterations
+                this.monteCarlo(1000);
+
+                //Calculs
+                moyenneAireMaSurface+=maSurface.getAire();
+                moyenneTailleListePointDansMaSurface+=listePointsDansMaSurface.size();
+
+                //Remise a 0 des listes
+
+
+                    listePoints = new ArrayList<Point>();
+                    listePointsDansMaSurface = new ArrayList<Point>();
+
+            }
+
+            moyenneAireMaSurface/=nbrIterations;
+            moyenneTailleListePointDansMaSurface/=nbrIterations;
+
+
+            System.out.println(this.toString());
+            System.out.println((int)Math.floor(moyenneTailleListePointDansMaSurface)+"    "+moyenneAireMaSurface);
+        }
+
+    public String monteCarloString(int nbrPoint){
+
+        this.monteCarlo(nbrPoint);
         return this.toString();
     }
 }

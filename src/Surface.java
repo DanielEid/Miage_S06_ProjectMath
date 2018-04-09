@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Surface {
@@ -9,6 +10,7 @@ public abstract class Surface {
     protected float x_max;
     protected float y_min;
     protected float y_max;
+    protected float aire;
 
     // constructeur par valeurs
 
@@ -18,6 +20,7 @@ public abstract class Surface {
         this.x_max = x_max;
         this.y_min = y_min;
         this.y_max = y_max;
+        this.aire= -1;
     }
 
     // tirage d'une abscisse au hasard dans l'intervalle [x_min; x_max]
@@ -30,6 +33,10 @@ public abstract class Surface {
         return (float) (y_min+ Math.random()*(y_max-y_min));
     }
 
+    protected void calculAireFromListePoint(float aireGraph, float nombrePointsGraph, float nombrePointSurface){
+           this.aire=(nombrePointSurface/nombrePointsGraph)*aireGraph;
+
+    }
     // permet de savoir si un point est dans la surface ou non :
     // à réimplémenter pour chaque type de surface
     protected abstract boolean isInArea(float x, float y);
@@ -66,4 +73,12 @@ public abstract class Surface {
         // TODO
     }
 
+
+    public float getAire() {
+        return aire;
+    }
+
+    public void setAire(float aire) {
+        this.aire = aire;
+    }
 }
