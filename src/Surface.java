@@ -20,7 +20,7 @@ public abstract class Surface {
         this.x_max = x_max;
         this.y_min = y_min;
         this.y_max = y_max;
-        this.aire= -1;
+        this.aire= 0;
     }
 
     // tirage d'une abscisse au hasard dans l'intervalle [x_min; x_max]
